@@ -1,0 +1,26 @@
+.App {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Hide Spline tutorial button */
+spline-viewer::part(spline-menu) {
+  display: none !important;
+}
+
+/* Alternative approach to hide tutorial button */
+spline-viewer[data-button="false"] {
+  --spline-menu-display: none;
+}
+
+/* Hide any overlay elements */
+.spline-viewer-overlay,
+.spline-tutorial-button,
+.spline-menu {
+  display: none !important;
+}
+
+
