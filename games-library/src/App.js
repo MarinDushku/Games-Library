@@ -1,9 +1,11 @@
 import Spline from '@splinetool/react-spline';
+import Navbar from './components/navbar.js';
 import './App.css';
 
 export default function App() {
   return (
     <div className="App">
+      <Navbar/>
       <Spline 
         scene="https://prod.spline.design/zanBOu6Q9QkrQovw/scene.splinecode"
         style={{
