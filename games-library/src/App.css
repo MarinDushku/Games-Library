@@ -2,10 +2,9 @@
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;    /* ✅ CHANGED: allows content to extend beyond viewport */
+  overflow-x: hidden;   /* ✅ CHANGED: only hide horizontal scroll, allow vertical */
 }
-
 /* Hide Spline tutorial button */
 spline-viewer::part(spline-menu) {
   display: none !important;

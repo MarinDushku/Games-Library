@@ -13,13 +13,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;    /* ✅ CHANGED: allows scrolling */
+  overflow-x: hidden;   /* ✅ CHANGED: only hide horizontal scroll */
 }
 
 #root {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;    /* ✅ CHANGED: allows content to expand */
 }
 
 code {

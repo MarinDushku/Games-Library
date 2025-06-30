@@ -1,61 +1,83 @@
-/* Reset default margins and set background on html/body */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* Base styles for html and body */
 html {
   scrollbar-width: thin;
   scrollbar-color: #f7e7ad rgba(26, 26, 26, 0.8);
   scroll-behavior: smooth;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
-  overflow-y: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-}
-
-/* Main container - fixed duplicate definition */
-.about-container {
   min-height: 100vh;
-  width: 100%;
-  padding-top: 100px;
-  padding-bottom: 4rem;
-  background-color: #1a1a1a;
-  background-image: url('../../images/download.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative;
 }
 
-/* Custom Scrollbar Styles */
-::-webkit-scrollbar {
+/* Custom Scrollbar Styles for Webkit browsers - VERTICAL ONLY */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
   width: 12px;
+  height: 0px;
 }
 
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar:horizontal,
+body::-webkit-scrollbar:horizontal,
+*::-webkit-scrollbar:horizontal {
+  display: none;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
   background: rgba(26, 26, 26, 0.8);
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #f7e7ad, #e6d088);
   border-radius: 10px;
   border: 2px solid rgba(26, 26, 26, 0.8);
 }
 
-::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #fff2c7, #f7e7ad);
   box-shadow: 0 0 10px rgba(247, 231, 173, 0.5);
 }
 
-::-webkit-scrollbar-thumb:active {
+html::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active,
+*::-webkit-scrollbar-thumb:active {
   background: linear-gradient(180deg, #e6d088, #d4c06a);
+}
+
+/* ✅ CLEANED UP: Scroll wrapper */
+.scroll-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #1a1a1a;
+}
+
+/* ✅ CLEANED UP: Main container */
+.about-container {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 4rem; /* ✅ REDUCED from 30rem */
+  background-color: #1a1a1a;
+  background-image: url('../../images/download.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .Head {
@@ -71,18 +93,16 @@ body {
 
 .MeetTheTeam {
   max-width: min(1000px, 90vw);
-  margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 auto 4rem auto; /* ✅ CLEANED UP margin */
+  padding: 3rem 2rem 3rem 2rem; /* ✅ STANDARDIZED padding */
   background: linear-gradient(135deg, rgba(45, 45, 45, 0.4) 0%, rgba(54, 54, 54, 0.4) 100%);
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   border: 1px solid #404040;
   position: relative;
   overflow: hidden;
-  margin-bottom: 2rem;
 }
 
-/* Subtle background pattern */
 .MeetTheTeam::before {
   content: '';
   position: absolute;
@@ -209,222 +229,221 @@ body {
   transform: scale(1.1);
 }
 
-/* Extra Large Screens (1440px and up) */
+/* ✅ CLEANED UP: Media queries with reasonable heights */
 @media (min-width: 1440px) {
   .about-container {
     padding-top: 120px;
+    padding-bottom: 6rem; /* ✅ REDUCED from 15rem */
   }
-  
+
   .MeetTheTeam {
     max-width: 1200px;
     padding: 4rem;
   }
-  
+
   .developers {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 4rem;
   }
 }
 
-/* Large Screens (1200px to 1439px) */
 @media (min-width: 1200px) and (max-width: 1439px) {
   .developers {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 }
 
-/* Tablets and Small Laptops (768px to 1199px) */
 @media (min-width: 768px) and (max-width: 1199px) {
   .about-container {
     padding-top: 90px;
+    padding-bottom: 4rem; /* ✅ REDUCED from 10rem */
   }
-  
+
   .MeetTheTeam {
-    margin: 2rem;
+    margin: 2rem auto 4rem auto;
     padding: 2.5rem;
   }
-  
+
   .developers {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
   }
-  
-  ::-webkit-scrollbar {
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
     width: 10px;
   }
 }
 
-/* Mobile and Small Tablets (481px to 767px) */
 @media (max-width: 767px) {
   .about-container {
     padding-top: 80px;
-    padding-bottom: 4rem;
-    background-attachment: scroll; /* Fix for mobile scrolling issues */
+    padding-bottom: 4rem; /* ✅ REDUCED from 20rem */
   }
-  
+
   .MeetTheTeam {
-    margin: 1rem;
+    margin: 1rem auto 3rem auto;
     padding: 2rem;
     border-radius: 15px;
   }
-  
+
   .developers {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 0;
   }
-  
+
   .social-links {
     justify-content: center;
   }
-  
+
   .social-links a {
     padding: 0.7rem 1.2rem;
     font-size: 0.85rem;
   }
-  
-  /* Mobile scrollbar */
-  ::-webkit-scrollbar {
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
     width: 8px;
   }
 }
 
-/* Small Mobile (320px to 480px) */
 @media (max-width: 480px) {
   .about-container {
     padding-top: 70px;
-    padding-bottom: 3rem;
+    padding-bottom: 3rem; /* ✅ REDUCED from 20rem */
   }
-  
+
   .MeetTheTeam {
-    margin: 0.5rem;
+    margin: 0.5rem auto 2rem auto;
     padding: 1.5rem;
     border-radius: 12px;
   }
-  
+
   .developers {
     gap: 1.5rem;
-    margin-bottom: 2rem;
   }
-  
+
   .developer {
     padding: 1.5rem;
   }
-  
+
   .social-links {
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
   }
-  
+
   .social-links a {
     width: min(200px, 90%);
     justify-content: center;
     padding: 0.8rem 1rem;
   }
-  
-  ::-webkit-scrollbar {
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
     width: 6px;
   }
 }
 
-/* Very Small Mobile (below 320px) */
 @media (max-width: 319px) {
   .about-container {
     padding-top: 60px;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  
+
   .MeetTheTeam {
-    margin: 0.25rem;
+    margin: 0.25rem auto 1rem auto;
     padding: 1rem;
   }
-  
+
   .social-links a {
     width: 100%;
     font-size: 0.8rem;
   }
 }
 
-/* High DPI / Retina Displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .MeetTheTeam {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
   }
-  
+
   .developer:hover {
     box-shadow: 0 10px 20px rgba(247, 231, 173, 0.3);
   }
 }
 
-/* Landscape orientation adjustments */
 @media (orientation: landscape) and (max-height: 500px) {
   .about-container {
     padding-top: 60px;
     padding-bottom: 2rem;
+    background-attachment: scroll;
   }
-  
+
   .Head {
     margin-bottom: 1.5rem;
   }
-  
+
   .MeetTheTeam {
     padding: 2rem;
   }
-  
+
   .MeetTheTeam p {
     margin-bottom: 2rem;
   }
 }
 
-/* Print styles */
 @media print {
+  .scroll-wrapper {
+    min-height: auto;
+  }
+  
   .about-container {
     background: white;
     color: black;
     padding-top: 0;
   }
-  
+
   .Head, .SubHead, .MeetTheTeam p, .developer h3 {
     color: black;
   }
-  
+
   .MeetTheTeam {
     background: white;
     box-shadow: none;
     border: 1px solid #ccc;
   }
-  
+
   .developer {
     background: #f5f5f5;
     border: 1px solid #ccc;
   }
-  
+
   .social-links a {
     color: black;
     border-color: black;
   }
 }
 
-/* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
   .developer, .social-links a, .social-icon {
     transition: none;
   }
-  
+
   html {
     scroll-behavior: auto;
   }
 }
 
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  /* The design is already dark, but we can add specific dark mode enhancements */
   .MeetTheTeam {
     background: linear-gradient(135deg, rgba(35, 35, 35, 0.5) 0%, rgba(44, 44, 44, 0.5) 100%);
   }
-  
+
   .developer {
     background: rgba(35, 35, 35, 0.7);
   }
