@@ -1,0 +1,139 @@
+.library-container {
+  display: flex;
+  min-height: 100vh;
+  background-image: url('./background library2.jpg'); /* Make sure this path matches your import */
+  background-size: cover;
+  background-position: center center; /* Better centering */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.library-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
+  z-index: 1;
+}
+
+.sidebar {
+  width: 220px; /* Slightly wider for better spacing */
+  background: rgba(0, 0, 0, 0.85); /* More opaque */
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 2rem 1.5rem; /* More padding for better spacing */
+  z-index: 2;
+  position: relative;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  top: 0; /* Ensure it starts from the top */
+}
+
+.sidebar h2 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.6rem;
+  color: #d4af37;
+  margin: 0 0 2rem 0; /* Reset margins, only bottom margin */
+  text-align: center;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  order: 1; /* Ensure it comes first */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  order: 2; /* Ensure it comes after the title */
+}
+
+.sidebar li {
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: 1.1rem;
+  border: 1px solid transparent;
+  font-weight: 500;
+  text-align: left;
+}
+
+.sidebar li:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateX(8px);
+  color: #f7e98e;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+}
+
+.main-content h1 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  color: #ffffff;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+  margin: 0;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  background: rgba(0, 0, 0, 0.3); /* Subtle background for better readability */
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .library-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    padding: 1.5rem;
+    order: 1;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .sidebar li {
+    flex: 1;
+    min-width: calc(50% - 0.25rem);
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
+  
+  .main-content {
+    min-height: 60vh;
+    order: 2;
+  }
+}
