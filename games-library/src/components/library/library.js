@@ -1,25 +1,35 @@
-import background from '../../images/background library2.jpg'; // Two ../ to go up from components/library to src
+import { useState } from 'react'; // Add this import
+import Games from './games/games.js'; // Add this import
+import background from '../../images/background library2.jpg';
 import './library.css'; 
+
 export default function Library() {
+  const [selectedCategory, setSelectedCategory] = useState('All'); // Add state
+
+  const handleCategoryClick = (category) => { // Add click handler
+    setSelectedCategory(category);
+  };
+
   return (
     <div className="library-container" style={{backgroundImage: `url(${background})`}}>
       <aside className="sidebar">
         <h2>Categories</h2>
         <ul>
-          <li>Action</li>
-          <li>Adventure</li>
-          <li>Arcade</li>
-          <li>Fighting</li>
-          <li>Horror</li>
-          <li>Puzzle</li>
-          <li>Sports</li>
-          <li>Strategy</li>
-          <li>RPG</li>
+          <li onClick={() => handleCategoryClick('All')}>All Games</li>
+          <li onClick={() => handleCategoryClick('Action')}>Action</li>
+          <li onClick={() => handleCategoryClick('Adventure')}>Adventure</li>
+          <li onClick={() => handleCategoryClick('Arcade')}>Arcade</li>
+          <li onClick={() => handleCategoryClick('Fighting')}>Fighting</li>
+          <li onClick={() => handleCategoryClick('Horror')}>Horror</li>
+          <li onClick={() => handleCategoryClick('Puzzle')}>Puzzle</li>
+          <li onClick={() => handleCategoryClick('Sports')}>Sports</li>
+          <li onClick={() => handleCategoryClick('Strategy')}>Strategy</li>
+          <li onClick={() => handleCategoryClick('RPG')}>RPG</li>
         </ul>
       </aside>
       
-      <main className="main-content">
-        <h1>Game Library</h1>
+      <main className="main-content"> {/* Add this section back */}
+        <Games selectedCategory={selectedCategory} />
       </main>
     </div>
   );
