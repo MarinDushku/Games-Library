@@ -1,12 +1,13 @@
 .library-container {
   display: flex;
   min-height: 100vh;
-  background-image: url('./background library2.jpg'); /* Make sure this path matches your import */
+  background-image: url('../../images/Lib.jpeg');
   background-size: cover;
-  background-position: center center; /* Better centering */
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+  padding-top: 80px; /* Add space below navbar */
 }
 
 .library-container::before {
@@ -16,43 +17,44 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
 .sidebar {
-  width: 220px; /* Slightly wider for better spacing */
-  background: rgba(0, 0, 0, 0.85); /* More opaque */
+  width: 220px;
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
-  padding: 2rem 1.5rem; /* More padding for better spacing */
+  padding: 2rem 1.5rem;
   z-index: 2;
   position: relative;
   box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  top: 0; /* Ensure it starts from the top */
+  height: calc(100vh - 80px); /* Adjust height to account for navbar */
+  overflow-y: auto; /* Add scroll if content overflows */
 }
 
 .sidebar h2 {
   font-family: 'Playfair Display', 'Georgia', serif;
   font-size: 1.6rem;
   color: #d4af37;
-  margin: 0 0 2rem 0; /* Reset margins, only bottom margin */
+  margin: 0 0 2rem 0;
   text-align: center;
   border-bottom: 2px solid #d4af37;
   padding-bottom: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.5px;
-  order: 1; /* Ensure it comes first */
+  order: 1;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  order: 2; /* Ensure it comes after the title */
+  order: 2;
 }
 
 .sidebar li {
@@ -86,6 +88,7 @@
   z-index: 2;
   position: relative;
   text-align: center;
+  height: calc(100vh - 80px); /* Adjust height to account for navbar */
 }
 
 .main-content h1 {
@@ -97,7 +100,7 @@
   font-weight: 400;
   font-style: italic;
   letter-spacing: 0.02em;
-  background: rgba(0, 0, 0, 0.3); /* Subtle background for better readability */
+  background: rgba(0, 0, 0, 0.3);
   padding: 1rem 2rem;
   border-radius: 15px;
   backdrop-filter: blur(5px);
@@ -107,12 +110,14 @@
 @media (max-width: 768px) {
   .library-container {
     flex-direction: column;
+    padding-top: 70px; /* Smaller padding for mobile */
   }
   
   .sidebar {
     width: 100%;
     padding: 1.5rem;
     order: 1;
+    height: auto; /* Auto height on mobile */
   }
   
   .sidebar h2 {
@@ -135,5 +140,6 @@
   .main-content {
     min-height: 60vh;
     order: 2;
+    height: auto; /* Auto height on mobile */
   }
 }

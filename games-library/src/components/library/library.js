@@ -1,4 +1,4 @@
-import background from './background library2.jpg'; // Two ../ to go up from components/library to src
+import background from '../../images/background library2.jpg'; // Two ../ to go up from components/library to src
 import './library.css'; 
 export default function Library() {
   return (

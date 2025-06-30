@@ -1,0 +1,202 @@
+/* Page container */
+.about-container {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  padding-top: 100px; /* Space below navbar */
+  padding-bottom: 2rem;
+  background-image: url('../../images/download.jpg');
+   background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.Head {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #f7e7ad;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.MeetTheTeam {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(45, 45, 45, 0.4) 0%, rgba(54, 54, 54, 0.4) 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid #404040;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background pattern */
+.MeetTheTeam::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(247, 231, 173, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(247, 231, 173, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.SubHead {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #f7e7ad;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.SubHead::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #f7e7ad, #e6d088);
+  border-radius: 2px;
+}
+
+.MeetTheTeam p {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #f7e7ad;
+  line-height: 1.8;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.developers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.developer {
+  background: rgba(45, 45, 45, 0.6);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #404040;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.developer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(247, 231, 173, 0.2);
+  border-color: #f7e7ad;
+}
+
+.developer h3 {
+  color: #f7e7ad;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  color: #f7e7ad;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  background: rgba(247, 231, 173, 0.1);
+  border: 2px solid #f7e7ad;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #f7e7ad;
+  color: #1a1a1a;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(247, 231, 173, 0.3);
+}
+
+.social-links a:hover .social-icon {
+  transform: scale(1.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .about-container {
+    padding-top: 80px;
+  }
+  
+  .Head {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .MeetTheTeam {
+    margin: 1rem;
+    padding: 2rem;
+  }
+  
+  .SubHead {
+    font-size: 1.8rem;
+  }
+  
+  .MeetTheTeam p {
+    font-size: 1.1rem;
+  }
+  
+  .developers {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .social-links {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-links a {
+    width: 180px;
+    justify-content: center;
+  }
+}
