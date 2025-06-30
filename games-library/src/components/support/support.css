@@ -1,0 +1,243 @@
+/* support.css */
+
+/* Main container with background */
+.support-container {
+  min-height: 100vh;
+  background-image: url('../../images/Lib.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  padding: 80px 2rem 2rem 2rem;
+  overflow-x: hidden;
+}
+
+/* Dark overlay for better readability */
+.support-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ensure all content is above overlay */
+.support-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+.SupTitle {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #d4af37;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+  position: relative;
+  opacity: 0;
+  animation: fadeInDown 1s ease-out 0.2s forwards;
+}
+
+.SupTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #d4af37, #f7e98e, #d4af37, transparent);
+  animation: expandLine 1.5s ease-out 1s forwards;
+}
+
+@keyframes expandLine {
+  to { width: 120px; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.SupText {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  text-align: center;
+  padding: 2.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.5s forwards;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.SupFeatures {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #d4af37;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  animation: fadeInScale 1s ease-out 0.8s forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.Specialeffect-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.Specialeffect-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
+
+.Specialeffect-list li {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Only entrance animations - no hover effects */
+.Specialeffect-list li:nth-child(1) {
+  animation: slideInLeft 0.8s ease-out 1.2s forwards;
+}
+
+.Specialeffect-list li:nth-child(2) {
+  animation: slideInRight 0.8s ease-out 1.4s forwards;
+}
+
+.Specialeffect-list li:nth-child(3) {
+  animation: slideInLeft 0.8s ease-out 1.6s forwards;
+}
+
+.Specialeffect-list li:nth-child(4) {
+  animation: slideInRight 0.8s ease-out 1.8s forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .support-container {
+    padding: 70px 1rem 2rem 1rem;
+    background-attachment: scroll;
+  }
+  
+  .Specialeffect-list ul {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .Specialeffect-list li {
+    padding: 1.8rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .SupText {
+    padding: 2rem 1.5rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Specialeffect-list li {
+    padding: 1.5rem 1.2rem;
+    font-size: 1rem;
+  }
+  
+  .SupText {
+    padding: 1.5rem 1.2rem;
+  }
+  
+  .support-container {
+    padding: 60px 0.5rem 1rem 0.5rem;
+  }
+}
+
+/* Fallback for unsupported backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .SupText,
+  .Specialeffect-list li {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
