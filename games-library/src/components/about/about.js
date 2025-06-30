@@ -29,7 +29,7 @@ export default function About() {
                 <FaLinkedin className="social-icon" />
                 LinkedIn
               </a>
-              <a href="https://instagram.com/marindushku" target="_blank" rel="noopener noreferrer">
+              <a href="hhttps://www.instagram.com/marin__d/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="social-icon" />
                 Instagram
               </a>
@@ -47,11 +47,11 @@ export default function About() {
                 <FaGithub className="social-icon" />
                 GitHub
               </a>
-              <a href="https://linkedin.com/in/nevinguni" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/nevin-guni-077969329/?originalSubdomain=al" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="social-icon" />
                 LinkedIn
               </a>
-              <a href="https://instagram.com/nevinguni" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/nevin.guni/#" target="_blank" rel="noopener noreferrer">
                 <FaInstagram className="social-icon" />
                 Instagram
               </a>
