@@ -1,10 +1,13 @@
-import Spline from '@splinetool/react-spline';
+import { useNavigate } from 'react-router-dom';
+import Spline from '@splinetool/react-spline'; 
 import Cover from './cover.js';
+
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
-    
     <>
-    <Cover/>
+      <Cover/>
       <Spline
         scene="https://prod.spline.design/zanBOu6Q9QkrQovw/scene.splinecode"
         style={{
@@ -27,12 +30,11 @@ export default function Home() {
         <div className="hero-content">
           <h1 className="hero-title">Your Gaming Eden Awaits</h1>
           <p className="hero-subtitle">Discover worlds beyond imagination in our curated collection</p>
-          <button className="cta-button" onClick={() => window.location.href = '/library'}>
-            Enter the Library
+          <button className="cta-button" onClick={() => navigate('/library')}>
+            Enter the Library                        
           </button>
         </div>
       </main>
     </>
-    
-  );
+  ); 
 }
