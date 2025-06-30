@@ -1,6 +1,6 @@
 
-import Navbar from './components/navbar.js';
-import Home from './components/home.js';
+import Navbar from './components/navbar/navbar.js';
+import Home from './components/home/home.js';
 import './App.css';
 
 export default function App() {
