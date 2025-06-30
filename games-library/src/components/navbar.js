@@ -7,7 +7,7 @@ export default function Navbar(){
       <img src={Logo} alt="Logo" className="navbar-logo" />  
       <ul className="navbar-menu">
         <li>Home</li>
-        <li>Store</li>
+        <li>Library</li>
         <li>About</li>
         <li>Support</li>
         <div className="search-container">
