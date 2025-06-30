@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Spline from '@splinetool/react-spline'; 
-import Cover from './cover.js';
+import Cover from '../cover/cover.js';
 
 
 export default function Home() {
