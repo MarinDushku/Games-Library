@@ -1,8 +1,10 @@
 import Spline from '@splinetool/react-spline';
-
+import Cover from './cover.js';
 export default function Home() {
   return (
+    
     <>
+    <Cover/>
       <Spline
         scene="https://prod.spline.design/zanBOu6Q9QkrQovw/scene.splinecode"
         style={{
@@ -31,5 +33,6 @@ export default function Home() {
         </div>
       </main>
     </>
+    
   );
 }
