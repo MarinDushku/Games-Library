@@ -5,7 +5,7 @@
   padding-top: 100px; /* Space below navbar */
   padding-bottom: 2rem;
   background-image: url('../../images/download.jpg');
-   background-size: cover;
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -159,6 +159,9 @@
 @media (max-width: 768px) {
   .about-container {
     padding-top: 80px;
+    min-height: auto; /* Allow natural height on mobile */
+    background-attachment: scroll; /* Fix background for mobile scrolling */
+    padding-bottom: 4rem; /* Add more bottom padding */
   }
   
   .Head {
@@ -169,6 +172,7 @@
   .MeetTheTeam {
     margin: 1rem;
     padding: 2rem;
+    margin-bottom: 2rem; /* Ensure space at bottom */
   }
   
   .SubHead {
@@ -182,6 +186,7 @@
   .developers {
     grid-template-columns: 1fr;
     gap: 2rem;
+    margin-bottom: 2rem; /* Add margin at bottom */
   }
   
   .social-links {
@@ -190,6 +195,10 @@
 }
 
 @media (max-width: 480px) {
+  .about-container {
+    padding-bottom: 3rem; /* Ensure adequate bottom padding */
+  }
+  
   .social-links {
     flex-direction: column;
     align-items: center;
@@ -198,5 +207,9 @@
   .social-links a {
     width: 180px;
     justify-content: center;
+  }
+  
+  .developers {
+    margin-bottom: 3rem; /* Extra space at bottom for very small screens */
   }
 }
