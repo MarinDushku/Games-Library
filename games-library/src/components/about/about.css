@@ -5,11 +5,12 @@
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+/* Instead of html, body - use a specific container */
+.about-container {
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
+  padding-top: 100px;
+  padding-bottom: 2rem;
   background-color: #1a1a1a;
   background-image: url('../../images/download.jpg');
   background-size: cover;
@@ -18,78 +19,47 @@ html, body {
   background-attachment: fixed;
 }
 
-/* Page container */
-.about-container {
-  min-height: 100vh;
-  width: 100%;
-  padding-top: 100px; /* Space below navbar */
-  padding-bottom: 2rem;
-  /* Remove background properties from here since they're now on body */
+/* Custom Scrollbar Styles - Always visible like library */
+::-webkit-scrollbar {
+  width: 12px;
 }
 
-/* Custom Scrollbar Styles - Hidden until scrolling */
+::-webkit-scrollbar-track {
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f7e7ad, #e6d088);
+  border-radius: 10px;
+  border: 2px solid rgba(26, 26, 26, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fff2c7, #f7e7ad);
+  box-shadow: 0 0 10px rgba(247, 231, 173, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #e6d088, #d4c06a);
+}
+
+/* For Firefox */
 html {
-  overflow-y: scroll; /* Make scrolling mandatory */
   scrollbar-width: thin;
-  scrollbar-color: transparent transparent; /* Hidden by default */
-  transition: scrollbar-color 0.3s ease;
+  scrollbar-color: #f7e7ad rgba(26, 26, 26, 0.8);
 }
 
 body {
   overflow-y: scroll;
 }
 
-/* Show scrollbar when scrolling */
-html:active {
-  scrollbar-color: #f7e7ad rgba(26, 26, 26, 0.8);
-}
-
-/* For Webkit browsers (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent; /* Hidden by default */
-  border-radius: 10px;
-  transition: background 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb {
-  background: transparent; /* Hidden by default */
-  border-radius: 10px;
-  transition: background 0.3s ease;
-}
-
-/* Show scrollbar when page is being scrolled */
-body:active ::-webkit-scrollbar-track,
-html:active ::-webkit-scrollbar-track {
-  background: rgba(26, 26, 26, 0.8);
-}
-
-body:active ::-webkit-scrollbar-thumb,
-html:active ::-webkit-scrollbar-thumb {
-  background: #f7e7ad;
-  border: 2px solid rgba(26, 26, 26, 0.8);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #e6d088 !important;
-  box-shadow: 0 0 10px rgba(247, 231, 173, 0.5);
-}
-
-/* Alternative approach using JavaScript trigger class */
-.scrolling ::-webkit-scrollbar-track {
-  background: rgba(26, 26, 26, 0.8);
-}
-
-.scrolling ::-webkit-scrollbar-thumb {
-  background: #f7e7ad;
-  border: 2px solid rgba(26, 26, 26, 0.8);
-}
-
-.scrolling {
-  scrollbar-color: #f7e7ad rgba(26, 26, 26, 0.8);
+/* Page container */
+.about-container {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 100px; /* Space below navbar */
+  padding-bottom: 2rem;
 }
 
 .Head {

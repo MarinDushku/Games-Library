@@ -1,31 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './about.css';
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 export default function About() {
-  useEffect(() => {
-    let scrollTimer = null;
-    
-    const handleScroll = () => {
-      document.body.classList.add('scrolling');
-      
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        document.body.classList.remove('scrolling');
-      }, 1000); // Hide scrollbar 1 second after scrolling stops
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimer) {
-        clearTimeout(scrollTimer);
-      }
-    };
-  }, []);
-
   return (
     <div className="about-container">
       <div className="Head">
