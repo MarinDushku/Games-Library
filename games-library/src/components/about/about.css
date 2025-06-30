@@ -5,21 +5,35 @@
   box-sizing: border-box;
 }
 
-/* Instead of html, body - use a specific container */
+/* Base styles for html and body */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #f7e7ad rgba(26, 26, 26, 0.8);
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Main container - fixed duplicate definition */
 .about-container {
   min-height: 100vh;
   width: 100%;
   padding-top: 100px;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
   background-color: #1a1a1a;
   background-image: url('../../images/download.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  position: relative;
 }
 
-/* Custom Scrollbar Styles - Always visible like library */
+/* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -44,44 +58,28 @@
   background: linear-gradient(180deg, #e6d088, #d4c06a);
 }
 
-/* For Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #f7e7ad rgba(26, 26, 26, 0.8);
-}
-
-body {
-  overflow-y: scroll;
-}
-
-/* Page container */
-.about-container {
-  min-height: 100vh;
-  width: 100%;
-  padding-top: 100px; /* Space below navbar */
-  padding-bottom: 2rem;
-}
-
 .Head {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
   color: #f7e7ad;
   letter-spacing: 2px;
   text-transform: uppercase;
+  padding: 0 1rem;
 }
 
 .MeetTheTeam {
-  max-width: 1000px;
+  max-width: min(1000px, 90vw);
   margin: 0 auto;
-  padding: 3rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
   background: linear-gradient(135deg, rgba(45, 45, 45, 0.4) 0%, rgba(54, 54, 54, 0.4) 100%);
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   border: 1px solid #404040;
   position: relative;
   overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 /* Subtle background pattern */
@@ -99,13 +97,14 @@ body {
 }
 
 .SubHead {
-  font-size: 2.2rem;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
   font-weight: 600;
   margin-bottom: 2rem;
   color: #f7e7ad;
   text-align: center;
   position: relative;
   z-index: 1;
+  padding: 0 1rem;
 }
 
 .SubHead::after {
@@ -121,7 +120,7 @@ body {
 }
 
 .MeetTheTeam p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   margin-bottom: 3rem;
   color: #f7e7ad;
   line-height: 1.8;
@@ -131,25 +130,28 @@ body {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
 }
 
 .developers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
   margin-top: 3rem;
   position: relative;
   z-index: 1;
+  padding: 0 1rem;
 }
 
 .developer {
   background: rgba(45, 45, 45, 0.6);
-  padding: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
   border-radius: 15px;
   text-align: center;
   border: 1px solid #404040;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  width: 100%;
 }
 
 .developer:hover {
@@ -161,7 +163,7 @@ body {
 .developer h3 {
   color: #f7e7ad;
   margin-bottom: 1.5rem;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -184,10 +186,11 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-width: fit-content;
 }
 
 .social-icon {
@@ -206,45 +209,78 @@ body {
   transform: scale(1.1);
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
+/* Extra Large Screens (1440px and up) */
+@media (min-width: 1440px) {
+  .about-container {
+    padding-top: 120px;
+  }
+  
+  .MeetTheTeam {
+    max-width: 1200px;
+    padding: 4rem;
+  }
+  
+  .developers {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 4rem;
+  }
+}
+
+/* Large Screens (1200px to 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .developers {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+/* Tablets and Small Laptops (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-container {
+    padding-top: 90px;
+  }
+  
+  .MeetTheTeam {
+    margin: 2rem;
+    padding: 2.5rem;
+  }
+  
+  .developers {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+}
+
+/* Mobile and Small Tablets (481px to 767px) */
+@media (max-width: 767px) {
   .about-container {
     padding-top: 80px;
-    min-height: auto; /* Allow natural height on mobile */
-    padding-bottom: 4rem; /* Add more bottom padding */
-  }
-  
-  html, body {
-    background-attachment: scroll; /* Fix background for mobile scrolling */
-  }
-  
-  .Head {
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
+    padding-bottom: 4rem;
+    background-attachment: scroll; /* Fix for mobile scrolling issues */
   }
   
   .MeetTheTeam {
     margin: 1rem;
     padding: 2rem;
-    margin-bottom: 2rem; /* Ensure space at bottom */
-  }
-  
-  .SubHead {
-    font-size: 1.8rem;
-  }
-  
-  .MeetTheTeam p {
-    font-size: 1.1rem;
+    border-radius: 15px;
   }
   
   .developers {
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-bottom: 2rem; /* Add margin at bottom */
+    padding: 0;
   }
   
   .social-links {
-    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .social-links a {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
   }
   
   /* Mobile scrollbar */
@@ -253,26 +289,143 @@ body {
   }
 }
 
+/* Small Mobile (320px to 480px) */
 @media (max-width: 480px) {
   .about-container {
-    padding-bottom: 3rem; /* Ensure adequate bottom padding */
+    padding-top: 70px;
+    padding-bottom: 3rem;
+  }
+  
+  .MeetTheTeam {
+    margin: 0.5rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .developers {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .developer {
+    padding: 1.5rem;
   }
   
   .social-links {
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
   }
   
   .social-links a {
-    width: 180px;
+    width: min(200px, 90%);
     justify-content: center;
-  }
-  
-  .developers {
-    margin-bottom: 3rem; /* Extra space at bottom for very small screens */
+    padding: 0.8rem 1rem;
   }
   
   ::-webkit-scrollbar {
     width: 6px;
+  }
+}
+
+/* Very Small Mobile (below 320px) */
+@media (max-width: 319px) {
+  .about-container {
+    padding-top: 60px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .MeetTheTeam {
+    margin: 0.25rem;
+    padding: 1rem;
+  }
+  
+  .social-links a {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+}
+
+/* High DPI / Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .MeetTheTeam {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  }
+  
+  .developer:hover {
+    box-shadow: 0 10px 20px rgba(247, 231, 173, 0.3);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .about-container {
+    padding-top: 60px;
+    padding-bottom: 2rem;
+  }
+  
+  .Head {
+    margin-bottom: 1.5rem;
+  }
+  
+  .MeetTheTeam {
+    padding: 2rem;
+  }
+  
+  .MeetTheTeam p {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .about-container {
+    background: white;
+    color: black;
+    padding-top: 0;
+  }
+  
+  .Head, .SubHead, .MeetTheTeam p, .developer h3 {
+    color: black;
+  }
+  
+  .MeetTheTeam {
+    background: white;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .developer {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+  }
+  
+  .social-links a {
+    color: black;
+    border-color: black;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .developer, .social-links a, .social-icon {
+    transition: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  /* The design is already dark, but we can add specific dark mode enhancements */
+  .MeetTheTeam {
+    background: linear-gradient(135deg, rgba(35, 35, 35, 0.5) 0%, rgba(44, 44, 44, 0.5) 100%);
+  }
+  
+  .developer {
+    background: rgba(35, 35, 35, 0.7);
   }
 }
