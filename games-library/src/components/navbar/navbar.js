@@ -1,4 +1,4 @@
-
+import Search from './search.js';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../images/logo.png'; 
 import './navbar.css';  
@@ -16,10 +16,7 @@ export default function Navbar(){
         <li onClick={() => navigate('/about')}>Contact Us</li>
         <li onClick={() => navigate('/support')}>Support</li>
         <div className="search-container">
-          <input type="text" placeholder="Search..." />
-          <button type="button" className="search-button">
-            <i className="fa fa-search"></i>
-          </button>                    
+          <Search    />                   
         </div>
       </ul>
     </div>
