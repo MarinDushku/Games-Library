@@ -5,7 +5,41 @@ import './playnow.css';
 export default function PlayNow() {
   const [hoveredGame, setHoveredGame] = useState(null);
   const [trailerPosition, setTrailerPosition] = useState({ x: 0, y: 0 });
+  const [filterBy, setFilterBy] = useState('players'); // Add filter state
   const hoverTimeoutRef = useRef(null);
+
+  // Add filtering and sorting logic
+  const getFilteredAndSortedGames = () => {
+    let sortedGames = [...friv2024GameData];
+    
+    switch(filterBy) {
+      case 'players':
+        sortedGames.sort((a, b) => {
+          const aPlayers = parseFloat(a.players.replace(/[KM]/g, (match) => match === 'K' ? '000' : '000000'));
+          const bPlayers = parseFloat(b.players.replace(/[KM]/g, (match) => match === 'K' ? '000' : '000000'));
+          return bPlayers - aPlayers;
+        });
+        break;
+      case 'rating':
+        sortedGames.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'trending':
+        sortedGames.sort((a, b) => {
+          if (a.trending && !b.trending) return -1;
+          if (!a.trending && b.trending) return 1;
+          return 0;
+        });
+        break;
+      default:
+        break;
+    }
+    
+    return sortedGames;
+  };
+
+  const handleFilterChange = (e) => {
+    setFilterBy(e.target.value);
+  };
 
   const handleGameHover = (game, event) => {
     clearTimeout(hoverTimeoutRef.current);
@@ -17,12 +51,10 @@ export default function PlayNow() {
       
       let xPosition = rect.right + 20;
       
-      // Adjust position if popup would go off screen
       if (xPosition + popupWidth > windowWidth) {
         xPosition = rect.left - popupWidth - 20;
       }
       
-      // Ensure popup doesn't go off left edge
       if (xPosition < 10) {
         xPosition = 10;
       }
@@ -32,7 +64,7 @@ export default function PlayNow() {
         y: Math.max(10, rect.top - 50)
       });
       setHoveredGame(game);
-    }, 300); // 300ms delay before showing trailer
+    }, 300);
   };
 
   const handleGameLeave = () => {
@@ -66,17 +98,13 @@ export default function PlayNow() {
   };
 
   const getTrailerUrl = (trailer) => {
-    // Handle different YouTube URL formats and add autoplay parameters
     let videoId = '';
     
     if (trailer.includes('youtube.com/embed/')) {
-      // Already an embed URL
       videoId = trailer.split('/embed/')[1]?.split('?')[0];
     } else if (trailer.includes('youtube.com/watch')) {
-      // Regular YouTube URL
       videoId = trailer.split('v=')[1]?.split('&')[0];
     } else if (trailer.includes('youtu.be/')) {
-      // Short YouTube URL
       videoId = trailer.split('youtu.be/')[1]?.split('?')[0];
     }
     
@@ -87,16 +115,22 @@ export default function PlayNow() {
     return trailer;
   };
 
+  const filteredGames = getFilteredAndSortedGames();
+
   return (
     <div className="play-now-container">
       <div className="header-section">
         <h1 className="page-title">MOST PLAYED FRIV GAMES</h1>
         <div className="filter-section">
           <span className="games-count">Top {friv2024GameData.length} played games</span>
-          <select className="filter-dropdown">
-            <option>By Current Players</option>
-            <option>By Rating</option>
-            <option>By Trending</option>
+          <select 
+            className="filter-dropdown" 
+            value={filterBy} 
+            onChange={handleFilterChange}
+          >
+            <option value="players">By Current Players</option>
+            <option value="rating">By Rating</option>
+            <option value="trending">By Trending</option>
           </select>
         </div>
       </div>
@@ -110,7 +144,7 @@ export default function PlayNow() {
           <div className="rating-col">RATING</div>
         </div>
 
-        {friv2024GameData.map((game, index) => (
+        {filteredGames.map((game, index) => (
           <div 
             key={game.id}
             className={`game-row ${hoveredGame?.id === game.id ? 'hovered' : ''}`}
@@ -157,7 +191,6 @@ export default function PlayNow() {
         ))}
       </div>
 
-      {/* Enhanced Hover Trailer Popup */}
       {hoveredGame && (
         <div 
           className="trailer-popup"
@@ -169,7 +202,7 @@ export default function PlayNow() {
           <div className="trailer-content">
             <div className="trailer-video-container">
               <iframe
-                key={hoveredGame.id} // Force re-render when game changes
+                key={hoveredGame.id}
                 src={getTrailerUrl(hoveredGame.trailer)}
                 title={`${hoveredGame.title} trailer`}
                 frameBorder="0"
