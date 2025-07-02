@@ -119,7 +119,7 @@ export default function PlayNow() {
   return (
     <div className="play-now-container">
       <div className="header-section">
-        <h1 className="page-title">MOST PLAYED FRIV GAMES</h1>
+        <h1 className="page-title">MOST PLAYED WEB GAMES</h1>
         <div className="filter-section">
           <span className="games-count">Top {friv2024GameData.length} played games</span>
           <select 
