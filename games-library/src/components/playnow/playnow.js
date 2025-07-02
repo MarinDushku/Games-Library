@@ -12,12 +12,27 @@ export default function PlayNow() {
     
     hoverTimeoutRef.current = setTimeout(() => {
       const rect = event.target.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
+      const popupWidth = 450;
+      
+      let xPosition = rect.right + 20;
+      
+      // Adjust position if popup would go off screen
+      if (xPosition + popupWidth > windowWidth) {
+        xPosition = rect.left - popupWidth - 20;
+      }
+      
+      // Ensure popup doesn't go off left edge
+      if (xPosition < 10) {
+        xPosition = 10;
+      }
+      
       setTrailerPosition({
-        x: rect.right + 20,
-        y: rect.top
+        x: xPosition,
+        y: Math.max(10, rect.top - 50)
       });
       setHoveredGame(game);
-    }, 500); // 500ms delay before showing trailer
+    }, 300);
   };
 
   const handleGameLeave = () => {
@@ -48,6 +63,28 @@ export default function PlayNow() {
     }
     
     return stars;
+  };
+
+  const getTrailerUrl = (trailer) => {
+    // Handle different YouTube URL formats and add autoplay parameters
+    let videoId = '';
+    
+    if (trailer.includes('youtube.com/embed/')) {
+      // Already an embed URL
+      videoId = trailer.split('/embed/')[1]?.split('?')[0];
+    } else if (trailer.includes('youtube.com/watch')) {
+      // Regular YouTube URL
+      videoId = trailer.split('v=')[1]?.split('&')[0];
+    } else if (trailer.includes('youtu.be/')) {
+      // Short YouTube URL
+      videoId = trailer.split('youtu.be/')[1]?.split('?')[0];
+    }
+    
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&playsinline=1&start=0`;
+    }
+    
+    return trailer;
   };
 
   return (
@@ -120,7 +157,7 @@ export default function PlayNow() {
         ))}
       </div>
 
-      {/* Hover Trailer Popup */}
+      {/* Enhanced Hover Trailer Popup */}
       {hoveredGame && (
         <div 
           className="trailer-popup"
@@ -130,19 +167,29 @@ export default function PlayNow() {
           }}
         >
           <div className="trailer-content">
-            <iframe
-              src={hoveredGame.trailer}
-              title={`${hoveredGame.title} trailer`}
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              className="trailer-video"
-            />
+            <div className="trailer-video-container">
+              <iframe
+                key={hoveredGame.id} // Force re-render when game changes
+                src={getTrailerUrl(hoveredGame.trailer)}
+                title={`${hoveredGame.title} trailer`}
+                frameBorder="0"
+                allow="autoplay; encrypted-media; fullscreen; accelerometer; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="trailer-video"
+              />
+              <div className="video-overlay"></div>
+              <div className="play-indicator">
+                ▶ AUTO-PLAY
+              </div>
+            </div>
             <div className="trailer-info">
               <h4>{hoveredGame.title}</h4>
               <p>{hoveredGame.description}</p>
               <div className="trailer-meta">
-                <span className="players">👥 {hoveredGame.players} playing</span>
+                <span className="players">
+                  👥 {hoveredGame.players} playing
+                  <span className="live-badge">LIVE</span>
+                </span>
                 <div className="rating">
                   {renderStars(hoveredGame.rating)}
                   <span>({hoveredGame.rating})</span>

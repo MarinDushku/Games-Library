@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import Spline from '@splinetool/react-spline'; 
 import Cover from '../cover/cover.js';
-
+import './home.css';
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className='home' >
       <Cover/>
       <Spline
         scene="https://prod.spline.design/zanBOu6Q9QkrQovw/scene.splinecode"
@@ -36,6 +36,6 @@ export default function Home() {
           </button>
         </div>
       </main>
-    </>
+    </div>
   ); 
 }
