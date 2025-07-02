@@ -11,9 +11,6 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   
-  width: 100vw;
-  min-height: 100vh;    /* ✅ CHANGED: allows scrolling */
-  overflow-x: hidden;   /* ✅ CHANGED: only hide horizontal scroll */
 }
 
 #root {

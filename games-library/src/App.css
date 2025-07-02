@@ -2,8 +2,8 @@
   margin: 0;
   padding: 0;
   width: 100vw;
-  min-height: 100vh;    /* ✅ CHANGED: allows content to extend beyond viewport */
-  overflow-x: hidden;   /* ✅ CHANGED: only hide horizontal scroll, allow vertical */
+  min-height: 100vh;
+  overflow-x: hidden !important;
 }
 /* Hide Spline tutorial button */
 spline-viewer::part(spline-menu) {
@@ -30,6 +30,7 @@ spline-viewer[data-button="false"] {
   position: relative;
   z-index: 1;
   padding-bottom: 12vh; /* Reduced from 20vh to move content lower */
+  padding-top: 80px;    /* Account for navbar height */
 }
 
 .hero-content {

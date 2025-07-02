@@ -1,4 +1,9 @@
-.home{
+.home {
   height: 100vh;
   overflow: hidden;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: -1;  
 }
