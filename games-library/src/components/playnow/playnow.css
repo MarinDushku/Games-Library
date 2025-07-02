@@ -10,11 +10,11 @@
   position: relative;
   padding: 20px;
   padding-top: 80px;
-  color: #f4f1e8;
-  font-family: 'Crimson Text', 'Georgia', serif;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
-/* Add elegant overlay for better text readability */
+/* Simple dark overlay */
 .play-now-container::before {
   content: '';
   position: absolute;
@@ -22,7 +22,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 15, 10, 0.85) 100%);
+  background: rgba(0, 0, 0, 0.75);
   z-index: 0;
 }
 
@@ -35,20 +35,17 @@
 }
 
 .header-section {
-  margin-bottom: 30px;
-  border-bottom: 2px solid #d4af37;
-  padding-bottom: 20px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 24px;
 }
 
 .page-title {
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 2.8rem;
-  font-weight: 400;
-  font-style: italic;
-  color: #d4af37;
-  margin: 0 0 15px 0;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
   text-align: center;
 }
 
@@ -59,108 +56,98 @@
 }
 
 .games-count {
-  color: #c9b896;
-  font-size: 1rem;
-  font-style: italic;
-  font-family: 'Crimson Text', 'Georgia', serif;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
 }
 
 .filter-dropdown {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid #d4af37;
-  color: #f4f1e8;
-  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 8px 16px;
   border-radius: 6px;
-  font-size: 0.95rem;
-  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .filter-dropdown:focus {
   outline: none;
-  border-color: #f7e98e;
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .filter-dropdown:hover {
-  background: rgba(212, 175, 55, 0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .games-table {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 .table-header {
   display: grid;
   grid-template-columns: 60px 1fr 120px 150px 180px;
-  gap: 15px;
-  padding: 18px 24px;
-  background: rgba(212, 175, 55, 0.9);
-  font-family: 'Playfair Display', 'Georgia', serif;
+  gap: 16px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.08);
   font-weight: 600;
-  font-size: 0.85rem;
-  color: #1a1a1a;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  border-bottom: 2px solid #d4af37;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .game-row {
   display: grid;
   grid-template-columns: 60px 1fr 120px 150px 180px;
-  gap: 15px;
-  padding: 22px 24px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
 }
 
 .game-row:hover {
-  background: rgba(212, 175, 55, 0.15);
-  transform: translateX(8px);
-  border-left: 3px solid #d4af37;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
 }
 
 .game-row.hovered {
-  background: rgba(212, 175, 55, 0.25);
-  border-left: 4px solid #f7e98e;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #ffffff;
 }
 
 .rank-number {
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #d4af37;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 
 .game-info {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .game-thumbnail {
-  width: 85px;
-  height: 64px;
+  width: 80px;
+  height: 60px;
   border-radius: 8px;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: transform 0.2s ease;
 }
 
 .game-row:hover .game-thumbnail {
-  transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+  transform: scale(1.05);
 }
 
 .game-details {
@@ -168,21 +155,18 @@
 }
 
 .game-title {
-  margin: 0 0 6px 0;
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 1.2rem;
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #f4f1e8;
+  color: #ffffff;
   display: flex;
   align-items: center;
-  gap: 10px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  gap: 8px;
 }
 
 .trending-badge {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   animation: pulse 2s infinite;
-  filter: drop-shadow(0 0 4px #ff6b35);
 }
 
 @keyframes pulse {
@@ -192,88 +176,77 @@
 
 .game-description {
   margin: 0;
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 0.9rem;
-  color: #c9b896;
-  line-height: 1.4;
-  font-style: italic;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.3;
 }
 
 .category-tag {
-  background: linear-gradient(135deg, #d4af37, #b8941f);
-  padding: 6px 14px;
-  border-radius: 15px;
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 0.85rem;
-  color: #1a1a1a;
-  font-weight: 600;
-  text-shadow: none;
-  box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  color: #ffffff;
+  font-weight: 500;
 }
 
 .player-count {
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-weight: 700;
-  color: #d4af37;
-  font-size: 1.1rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1rem;
 }
 
 .rating-stars {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .star {
-  color: #d4af37;
-  font-size: 1.1rem;
-  text-shadow: 0 0 4px rgba(212, 175, 55, 0.5);
+  color: #ffd700;
+  font-size: 1rem;
 }
 
 .star.empty {
-  color: #4a4a4a;
-  text-shadow: none;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .star.half {
-  background: linear-gradient(90deg, #d4af37 50%, #4a4a4a 50%);
+  background: linear-gradient(90deg, #ffd700 50%, rgba(255, 255, 255, 0.3) 50%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .rating-number {
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 0.85rem;
-  color: #c9b896;
-  margin-left: 6px;
-  font-style: italic;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-left: 4px;
 }
 
-/* Elegant Trailer Popup */
+/* Clean Trailer Popup */
 .trailer-popup {
   position: fixed;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.95);
-  border: 2px solid #d4af37;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   padding: 0;
   overflow: hidden;
-  width: 420px;
-  animation: fadeInUp 0.4s ease;
-  backdrop-filter: blur(15px);
+  width: 400px;
+  animation: fadeInUp 0.3s ease;
+  backdrop-filter: blur(20px);
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(15px) scale(0.95);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -283,31 +256,26 @@
 
 .trailer-video {
   width: 100%;
-  height: 235px;
+  height: 225px;
   border: none;
-  border-bottom: 1px solid #d4af37;
 }
 
 .trailer-info {
-  padding: 18px;
+  padding: 16px;
 }
 
 .trailer-info h4 {
-  margin: 0 0 10px 0;
-  color: #d4af37;
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 1.2rem;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-size: 1.1rem;
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .trailer-info p {
-  margin: 0 0 14px 0;
-  color: #c9b896;
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  font-style: italic;
+  margin: 0 0 12px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .trailer-meta {
@@ -317,27 +285,24 @@
 }
 
 .players {
-  color: #d4af37;
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 0.9rem;
-  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .trailer-meta .rating {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .trailer-meta .rating .star {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .trailer-meta .rating span {
-  font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: 0.85rem;
-  color: #c9b896;
-  font-style: italic;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Responsive Design */
@@ -347,7 +312,7 @@
   }
   
   .trailer-popup {
-    width: 380px;
+    width: 350px;
   }
 }
 
@@ -365,36 +330,11 @@
   }
   
   .trailer-popup {
-    width: 320px;
+    width: 300px;
     left: 10px !important;
   }
   
   .page-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
-  
-  .game-title {
-    font-size: 1.1rem;
-  }
-}
-
-/* Custom scrollbar styling to match theme */
-.games-table::-webkit-scrollbar {
-  height: 8px;
-}
-
-.games-table::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-}
-
-.games-table::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #d4af37, #b8941f);
-  border-radius: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.games-table::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(90deg, #f7e98e, #d4af37);
-  box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
 }
