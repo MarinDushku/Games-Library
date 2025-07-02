@@ -5,10 +5,9 @@ import './playnow.css';
 export default function PlayNow() {
   const [hoveredGame, setHoveredGame] = useState(null);
   const [trailerPosition, setTrailerPosition] = useState({ x: 0, y: 0 });
-  const [filterBy, setFilterBy] = useState('players'); // Add filter state
+  const [filterBy, setFilterBy] = useState('players'); 
   const hoverTimeoutRef = useRef(null);
-
-  // Add filtering and sorting logic
+  
   const getFilteredAndSortedGames = () => {
     let sortedGames = [...friv2024GameData];
     

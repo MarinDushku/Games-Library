@@ -1,12 +1,12 @@
-import { useState } from 'react'; // Add this import
-import Games from './games/games.js'; // Add this import
+import { useState } from 'react'; 
+import Games from './games/games.js'; 
 import background from '../../images/background library2.jpg';
 import './library.css'; 
 
 export default function Library() {
-  const [selectedCategory, setSelectedCategory] = useState('All'); // Add state
+  const [selectedCategory, setSelectedCategory] = useState('All'); 
 
-  const handleCategoryClick = (category) => { // Add click handler
+  const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
@@ -28,7 +28,7 @@ export default function Library() {
         </ul>
       </aside>
       
-      <main className="main-content"> {/* Add this section back */}
+      <main className="main-content"> {}
         <Games selectedCategory={selectedCategory} />
       </main>
     </div>

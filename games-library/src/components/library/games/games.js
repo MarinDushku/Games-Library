@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import gamesData from './gamesdata.js'; 
-import GameModal from './gameModal.js'; // import the separate component
+import GameModal from './gameModal.js'; 
 import './games.css';
 
 export default function Games({ selectedCategory }) { 
