@@ -6,6 +6,8 @@ import Home from './components/home/home.js';
 import Library from './components/library/library.js';
 import About from './components/about/about.js';
 import Support from './components/support/support.js';
+import PlayNow from './components/playnow/playnow.js';
+
 import './App.css';
 
 
@@ -19,6 +21,7 @@ export default function App() {
           <Route path="/library" element={<Library />} />
           <Route path="/about" element={<About />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/playnow" element={<PlayNow />} />
         </Routes>
       </div>
     </Router>
