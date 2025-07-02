@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { friv2024GameData } from './playnowdata.js';
 import './playnow.css';
 
+
 export default function PlayNow() {
   const [hoveredGame, setHoveredGame] = useState(null);
   const [trailerPosition, setTrailerPosition] = useState({ x: 0, y: 0 });
@@ -32,7 +33,11 @@ export default function PlayNow() {
         y: Math.max(10, rect.top - 50)
       });
       setHoveredGame(game);
+<<<<<<< Updated upstream
     }, 300);
+=======
+    }, 5); // 500ms delay before showing trailer
+>>>>>>> Stashed changes
   };
 
   const handleGameLeave = () => {
