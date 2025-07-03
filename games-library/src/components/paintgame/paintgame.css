@@ -1,0 +1,232 @@
+.paint-game-container {
+  display: flex;
+  min-height: 100vh;
+  background-image: url('../../images/gamebackground.jpg'); /* Add your background image here */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  padding-top: 80px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paint-game-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.paint-game-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 2;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.paint-game-header h1 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  color: #ffffff;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+  margin: 0 0 1rem 0;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.paint-game-header p {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+  color: #f5f5f5;
+  margin: 0;
+  font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.game-wrapper {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+  z-index: 2;
+  position: relative;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  max-width: 1200px;
+  width: 90%;
+}
+
+.game-wrapper iframe {
+  border-radius: 10px;
+  min-height: 600px;
+  width: 100%;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-instructions {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  position: relative;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  max-width: 1200px;
+  width: 90%;
+}
+
+.game-instructions h3 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: #d4af37;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.game-instructions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.game-instructions li {
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: 1.1rem;
+  color: #f5f5f5;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.game-instructions li:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateX(8px);
+  color: #f7e98e;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.game-instructions li::before {
+  content: '✦';
+  color: #d4af37;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .paint-game-container {
+    padding-top: 70px;
+  }
+  
+  .paint-game-header {
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .paint-game-header h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .paint-game-header p {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+  
+  .game-wrapper {
+    padding: 1.5rem;
+    width: 95%;
+  }
+  
+  .game-wrapper iframe {
+    min-height: 400px;
+  }
+  
+  .game-instructions {
+    padding: 1.5rem;
+    width: 95%;
+  }
+  
+  .game-instructions h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .game-instructions li {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Custom scrollbar */
+.paint-game-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.paint-game-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.paint-game-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #b8941f);
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.paint-game-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f7e98e, #d4af37);
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.paint-game-header,
+.game-wrapper,
+.game-instructions {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.game-wrapper {
+  animation-delay: 0.2s;
+}
+
+.game-instructions {
+  animation-delay: 0.4s;
+}

@@ -15,6 +15,7 @@ export default function Navbar(){
         <li onClick={() => navigate('/playnow')}>Play Now</li> 
         <li onClick={() => navigate('/about')}>Contact Us</li>
         <li onClick={() => navigate('/support')}>Support</li>
+        <li onClick={() => navigate('/paint')}>Paint Game</li>
         <div className="search-container">
           <Search />                   
         </div>

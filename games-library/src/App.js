@@ -7,6 +7,7 @@ import Library from './components/library/library.js';
 import About from './components/about/about.js';
 import Support from './components/support/support.js';
 import PlayNow from './components/playnow/playnow.js';
+import PaintGame from './components/paintgame/paintgame.js';
 
 import './App.css';
 
@@ -36,6 +37,7 @@ function AppContent() {
         <Route path="/about" element={<About />} />
         <Route path="/support" element={<Support />} />
         <Route path="/playnow" element={<PlayNow />} />
+         <Route path="/paint" element={<PaintGame />} />
       </Routes>
     </div>
   );
