@@ -12,7 +12,7 @@ export default function Navbar(){
       <ul className="navbar-menu">
         <li onClick={() => navigate('/')}>Home</li>
         <li onClick={() => navigate('/library')}>Library</li>
-        <li onClick={() => navigate('/playnow')}>Play Now</li> {/* Changed to lowercase */}
+        <li onClick={() => navigate('/playnow')}>Play Now</li> 
         <li onClick={() => navigate('/about')}>Contact Us</li>
         <li onClick={() => navigate('/support')}>Support</li>
         <div className="search-container">
