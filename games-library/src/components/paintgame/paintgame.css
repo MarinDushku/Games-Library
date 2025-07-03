@@ -1,13 +1,13 @@
 .paint-game-container {
   display: flex;
   min-height: 100vh;
-  background-image: url('../../images/gamebackground.jpg'); /* Add your background image here */
+  background-image: url('../../images/gamebackground.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
-  padding-top: 80px;
+  padding: 2rem 1rem;
   flex-direction: column;
   align-items: center;
 }
@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
@@ -28,69 +28,294 @@
   margin-bottom: 2rem;
   z-index: 2;
   position: relative;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   padding: 2rem 3rem;
   border-radius: 15px;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(212, 175, 55, 0.4);
 }
 
 .paint-game-header h1 {
   font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  color: #ffffff;
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #d4af37;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
   margin: 0 0 1rem 0;
   font-weight: 400;
-  font-style: italic;
   letter-spacing: 0.02em;
 }
 
 .paint-game-header p {
   font-family: 'Crimson Text', 'Georgia', serif;
-  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   color: #f5f5f5;
   margin: 0;
   font-weight: 300;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   line-height: 1.5;
-  letter-spacing: 0.5px;
 }
 
-.game-wrapper {
+/* Reference Gallery */
+.reference-gallery {
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   margin-bottom: 2rem;
   z-index: 2;
   position: relative;
   border: 2px solid rgba(212, 175, 55, 0.4);
-  max-width: 1200px;
-  width: 90%;
-}
-
-.game-wrapper iframe {
-  border-radius: 10px;
-  min-height: 600px;
   width: 100%;
-  border: 2px solid rgba(212, 175, 55, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 1200px;
 }
 
+.reference-gallery h3 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: #d4af37;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 0.8rem;
+}
+
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.pixelated-folder {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border: 3px solid #d4af37;
+  border-radius: 8px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.5),
+    inset 2px 2px 4px rgba(212, 175, 55, 0.2);
+}
+
+.pixelated-folder:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    6px 6px 12px rgba(0, 0, 0, 0.6),
+    inset 2px 2px 4px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+  border-color: #f7e98e;
+}
+
+.pixelated-folder.selected {
+  background: linear-gradient(145deg, #d4af37, #b8941f);
+  border-color: #f7e98e;
+  transform: translateY(-5px);
+  box-shadow: 
+    8px 8px 16px rgba(212, 175, 55, 0.4),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.pixelated-folder.selected p {
+  color: #1a1a1a;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  font-weight: 900;
+}
+
+.folder-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem;
+  border: 2px solid #d4af37;
+  border-radius: 6px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  box-shadow: inset 1px 1px 3px rgba(212, 175, 55, 0.3);
+}
+
+.folder-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  
+}
+
+.pixelated-folder p {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #d4af37;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Main Game Area - Adjusted proportions */
+.game-main-area {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin-bottom: 2rem;
+  z-index: 2;
+  position: relative;
+}
+
+/* Reference Panel - Made smaller */
+.reference-panel {
+  flex: 0 0 280px; /* Fixed width, smaller */
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  height: fit-content;
+}
+
+.reference-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.reference-header h4 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: #d4af37;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.clear-button {
+  background: linear-gradient(145deg, #dc3545, #c82333);
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.clear-button:hover {
+  background: linear-gradient(145deg, #e74c3c, #dc3545);
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.reference-display {
+  text-align: center;
+}
+
+.reference-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(212, 175, 55, 0.1);
+  margin-bottom: 1rem;
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  /* Removed the filter that was causing the green tint */
+}
+
+.reference-title {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  color: #d4af37;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.reference-placeholder {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  color: #d4af37;
+}
+
+.reference-placeholder p {
+  font-family: 'Crimson Text', 'Georgia', serif;
+  font-size: 0.9rem;
+  margin: 0;
+  font-style: italic;
+  line-height: 1.4;
+  color: #999;
+}
+
+/* Paint Canvas Area - Made much bigger */
+.paint-canvas-area {
+  flex: 1; /* Takes up remaining space */
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+.canvas-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.canvas-header h4 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: #d4af37;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.paint-iframe {
+  border-radius: 10px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(212, 175, 55, 0.1);
+  width: 100%;
+  height: 700px; /* Much bigger canvas */
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+}
+
+/* Instructions */
 .game-instructions {
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   z-index: 2;
   position: relative;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  max-width: 1200px;
-  width: 90%;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  width: 100%;
+  max-width: 1400px;
 }
 
 .game-instructions h3 {
@@ -102,7 +327,6 @@
   text-align: center;
   border-bottom: 2px solid #d4af37;
   padding-bottom: 0.8rem;
-  letter-spacing: 0.5px;
 }
 
 .game-instructions ul {
@@ -126,11 +350,10 @@
 }
 
 .game-instructions li:hover {
-  background: rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.2);
   border-color: rgba(212, 175, 55, 0.5);
   transform: translateX(8px);
   color: #f7e98e;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
 .game-instructions li::before {
@@ -140,72 +363,104 @@
   margin-right: 1rem;
 }
 
-/* Responsive design */
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .game-main-area {
+    max-width: 1200px;
+  }
+  
+  .reference-panel {
+    flex: 0 0 260px;
+  }
+  
+  .paint-iframe {
+    height: 600px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .game-main-area {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .reference-panel {
+    flex: none;
+    max-width: none;
+    min-width: auto;
+  }
+  
+  .paint-iframe {
+    height: 550px;
+  }
+  
+  .reference-image {
+    max-height: 250px;
+  }
+}
+
 @media (max-width: 768px) {
   .paint-game-container {
-    padding-top: 70px;
+    padding: 1rem 0.5rem;
   }
   
-  .paint-game-header {
-    padding: 1.5rem 2rem;
-    margin-bottom: 1.5rem;
+  .folder-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1rem;
   }
   
-  .paint-game-header h1 {
-    font-size: clamp(2rem, 6vw, 3rem);
+  .pixelated-folder {
+    padding: 1rem;
   }
   
-  .paint-game-header p {
-    font-size: clamp(1rem, 3vw, 1.2rem);
+  .folder-icon {
+    width: 60px;
+    height: 60px;
   }
   
-  .game-wrapper {
-    padding: 1.5rem;
-    width: 95%;
+  .reference-panel,
+  .paint-canvas-area {
+    padding: 1rem;
   }
   
-  .game-wrapper iframe {
-    min-height: 400px;
+  .paint-iframe {
+    height: 450px;
   }
   
+  .reference-image {
+    max-height: 200px;
+  }
+  
+  .reference-gallery,
   .game-instructions {
     padding: 1.5rem;
-    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .folder-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   }
   
-  .game-instructions h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  .folder-icon {
+    width: 50px;
+    height: 50px;
   }
   
-  .game-instructions li {
-    padding: 0.8rem 1rem;
-    font-size: 1rem;
+  .pixelated-folder p {
+    font-size: 0.8rem;
+  }
+  
+  .paint-iframe {
+    height: 400px;
+  }
+  
+  .reference-image {
+    max-height: 150px;
   }
 }
 
-/* Custom scrollbar */
-.paint-game-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.paint-game-container::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-}
-
-.paint-game-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #d4af37, #b8941f);
-  border-radius: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.paint-game-container::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #f7e98e, #d4af37);
-  box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
-}
-
-/* Loading animation */
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -218,15 +473,20 @@
 }
 
 .paint-game-header,
-.game-wrapper,
+.reference-gallery,
+.game-main-area,
 .game-instructions {
   animation: fadeIn 0.8s ease-out;
 }
 
-.game-wrapper {
+.reference-gallery {
   animation-delay: 0.2s;
 }
 
-.game-instructions {
+.game-main-area {
   animation-delay: 0.4s;
+}
+
+.game-instructions {
+  animation-delay: 0.6s;
 }
