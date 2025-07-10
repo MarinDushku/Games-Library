@@ -118,18 +118,7 @@ npm test -- --coverage
 - **Framework**: Jest with React Testing Library
 - **Setup**: `setupTests.js` configures jest-dom matchers
 - **Test Files**: `*.test.js` files alongside components
-
-## 🔄 DB Migrations
-
-This application uses static data files and doesn't require database migrations. Game data is stored in:
-- `src/components/library/games/gamesdata.js`
-- `src/components/playnow/playnowdata.js`
-
-To update game data:
-1. Edit the respective data files
-2. Follow the existing object structure
-3. Restart the development server
-
+- 
 ## 🚀 Pre-commit Hooks
 
 Currently, no pre-commit hooks are configured. Recommended setup:
